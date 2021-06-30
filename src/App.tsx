@@ -4,6 +4,33 @@ import { generateSvgPath, GeneratorConfig } from './lib';
 
 import './App.css';
 
+{/* TODO: We haven't yet added the styes:
+
+<style>
+  #polywrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  svg {
+    width: 60vh;
+  }
+
+  .click-through {
+    pointer-events: none;
+  }
+</style>
+
+*/}
+
+{/* TODO: do we need this tag? 
+
+<main id="polywrap"></main>
+
+*/}
+
 const configs: GeneratorConfig[] = [
   {
     growth: 2,
