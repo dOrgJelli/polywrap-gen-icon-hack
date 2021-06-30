@@ -31,6 +31,7 @@ import './App.css';
 
 */}
 
+
 const configs: GeneratorConfig[] = [
   {
     growth: 2,
@@ -54,7 +55,37 @@ const configs: GeneratorConfig[] = [
       pulse: 6,
     },
   }
-]
+];
+
+
+// Create the svg paths to add to the animations
+const start = generateSvgPath(configs[0]);
+const end = generateSvgPath(configs[1]);
+
+function CreateAtom(props: GeneratorConfig) {
+
+  return (      
+    <div style={{ width: "100px" }}>
+      <a  target="_blank" rel="noredirect">
+        <svg viewBox="0 0 160 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill={props.fill} >
+            <animate
+              id="anim"
+              fill="freeze"
+              attributeName="d"
+              //dur={props.timing.morph}
+              repeatCount="1"
+              values="
+                ${start}
+                ${end}
+              "
+            /> 
+          </path>
+        </svg>
+      </a>
+    </div>
+)
+}
 
 function Blob(props: { id: string }) {
   const start = generateSvgPath(configs[0]);
@@ -90,6 +121,12 @@ function App() {
           Randomize
         </button>
         <Blob id={"blob-1"} />
+        <CreateAtom 
+          growth={10}
+          edges={2}
+          size={100}
+          link={"https://polywrap.io"}
+        />
       </header>
     </div>
   );

@@ -15,6 +15,7 @@ import {
 // blog.transition(otherBlob)?
 
 export interface GeneratorConfig {
+
   /* Minimum size of the blob in percentage (0-100). Smaller = more randomness. */
   growth: number;
 
@@ -43,7 +44,11 @@ export const defaultConfig: GeneratorConfig = {
   size: 400,
   fill: "#555555",
   seed: undefined,
-  link: "https://polywrap.io"
+  link: "https://polywrap.io",
+  timing: {
+    morph: 16,
+    pulse: 6,
+  },
 };
 
 export function generateSvgPath(config: GeneratorConfig = defaultConfig): {
