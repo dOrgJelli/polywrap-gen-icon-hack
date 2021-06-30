@@ -24,15 +24,26 @@ export interface GeneratorConfig {
   /* Blob path size */
   size: number;
 
+  /* Sets the color of the blob/atom */
+  fill?: string;
+
+  /* Sets the color of the blob/atom */
+  link: string;
+
   /* Set seed value to get same fixed shape */
   seed?: number;
+
+  timing?: object;  
 }
 
+
 export const defaultConfig: GeneratorConfig = {
-  size: 400,
   growth: 6,
   edges: 6,
-  seed: undefined
+  size: 400,
+  fill: "#555555",
+  seed: undefined,
+  link: "https://polywrap.io"
 };
 
 export function generateSvgPath(config: GeneratorConfig = defaultConfig): {
@@ -48,7 +59,7 @@ export function createPoints(config: GeneratorConfig): {
   destPoints: Point[];
   seed: number;
 } {
-  const { size, growth, edges, seed } = config;
+  const { growth, edges, size, seed } = config;
 
   let outerRad = size / 2;
   let innerRad = growth * (outerRad / 10);

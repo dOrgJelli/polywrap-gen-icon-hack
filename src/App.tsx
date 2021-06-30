@@ -8,12 +8,24 @@ const configs: GeneratorConfig[] = [
   {
     growth: 2,
     edges: 6,
-    size: 100
+    size: 100,
+    fill: "#FFC272",
+    link: "https://www.ethereum.org",
+    timing: {
+      morph: 24,
+      pulse: 16,
+    },
   },
   {
     growth: 10,
     edges: 6,
-    size: 100
+    size: 100,
+    fill: "#1B5FED",
+    link: "https://www.uniswap.org",
+    timing: {
+      morph: 16,
+      pulse: 6,
+    },
   }
 ]
 
@@ -23,7 +35,7 @@ function Blob(props: { id: string }) {
 
   return (
     <div style={{ width: "100px" }}>
-      <svg>
+      <svg viewBox="0 0 160 200" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path id={props.id} d={start.path} fill="#85ffda" stroke="#85ffda" />
         <animate
           id="anim"
@@ -51,10 +63,6 @@ function App() {
           Randomize
         </button>
         <Blob id={"blob-1"} />
-        <Blob id={"blob-2"} />
-        <Blob id={"blob-3"} />
-        <Blob id={"blob-4"} />
-        <Blob id={"blob-5"} />
       </header>
     </div>
   );
