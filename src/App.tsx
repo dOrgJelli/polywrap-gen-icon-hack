@@ -59,14 +59,17 @@ const configs: GeneratorConfig[] = [
 
 
 // Create the svg paths to add to the animations
-const start = generateSvgPath(configs[0]);
-const end = generateSvgPath(configs[1]);
+const start_path = generateSvgPath(configs[0]).path;
+const end_path = generateSvgPath(configs[1]).path;
+console.log("start=")
+console.log(start_path);
+console.log("end=")
+console.log(end_path)
 
-function CreateAtom(props: GeneratorConfig) {
-
+function CreateAtom(props: GeneratorConfig, start: string, end: string) {
   return (      
     <div style={{ width: "100px" }}>
-      <a  target="_blank" rel="noredirect">
+      <a href="https://polywrap.io" target="_blank" rel="noreferrer">
         <svg viewBox="0 0 160 200" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fill={props.fill} >
             <animate
@@ -75,10 +78,8 @@ function CreateAtom(props: GeneratorConfig) {
               attributeName="d"
               //dur={props.timing.morph}
               repeatCount="1"
-              values="
-                ${start}
-                ${end}
-              "
+              from={start_path}
+              to={end_path}
             /> 
           </path>
         </svg>
@@ -126,6 +127,7 @@ function App() {
           edges={2}
           size={100}
           link={"https://polywrap.io"}
+          
         />
       </header>
     </div>
