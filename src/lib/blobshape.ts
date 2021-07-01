@@ -28,7 +28,7 @@ export interface GeneratorConfig {
   /* Sets the color of the blob/atom */
   fill?: string;
 
-  /* Sets the color of the blob/atom */
+  /* If user clicks this blob/atom. they'll be sent to this URL */
   link: string;
 
   /* Set seed value to get same fixed shape */
