@@ -57,7 +57,6 @@ const configs: GeneratorConfig[] = [
   }
 ];
 
-
 // Create the svg paths to add to the animations
 const start_path = generateSvgPath(configs[0]).path;
 const end_path = generateSvgPath(configs[1]).path;
@@ -68,10 +67,9 @@ console.log(end_path)
 
 function CreateAtom(props: GeneratorConfig, start: string, end: string) {
   return (      
-    <div style={{ width: "100px" }}>
-      <a href="https://polywrap.io" target="_blank" rel="noreferrer">
         <svg viewBox="0 0 160 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path fill={props.fill} >
+          
+          <path fill={props.fill} d={start_path} />
             <animate
               id="anim"
               fill="freeze"
@@ -81,11 +79,9 @@ function CreateAtom(props: GeneratorConfig, start: string, end: string) {
               from={start_path}
               to={end_path}
             /> 
-          </path>
-        </svg>
-      </a>
-    </div>
-)
+          
+        </svg>   
+  )
 }
 
 function Blob(props: { id: string }) {
@@ -93,7 +89,6 @@ function Blob(props: { id: string }) {
   const end = generateSvgPath(configs[1]);
 
   return (
-    <div style={{ width: "100px" }}>
       <svg viewBox="0 0 160 200" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path id={props.id} d={start.path} fill="#85ffda" stroke="#85ffda" />
         <animate
@@ -107,7 +102,6 @@ function Blob(props: { id: string }) {
           fill="freeze"
         />
       </svg>
-    </div>
   );
 }
 
@@ -121,14 +115,14 @@ function App() {
         <button onClick={() => setUpdateCount(updateCount + 1)}>
           Randomize
         </button>
-        <Blob id={"blob-1"} />
         <CreateAtom 
           growth={10}
           edges={2}
           size={100}
           link={"https://polywrap.io"}
-          
         />
+        <Blob id={"blob-1"} />
+
       </header>
     </div>
   );
