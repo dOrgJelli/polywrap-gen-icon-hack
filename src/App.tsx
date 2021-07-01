@@ -8,14 +8,14 @@ const configs: GeneratorConfig[] = [
   {
     growth: 2,
     edges: 6,
-    size: 100
+    size: 100,
   },
   {
     growth: 10,
     edges: 6,
-    size: 100
+    size: 100,
   }
-]
+];
 
 function Blob(props: { id: string }) {
   const start = generateSvgPath(configs[0]);
@@ -41,7 +41,6 @@ function Blob(props: { id: string }) {
 }
 
 function App() {
-
   const [updateCount, setUpdateCount] = React.useState(0);
 
   return (

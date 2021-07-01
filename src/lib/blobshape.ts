@@ -15,6 +15,7 @@ import {
 // blog.transition(otherBlob)?
 
 export interface GeneratorConfig {
+
   /* Minimum size of the blob in percentage (0-100). Smaller = more randomness. */
   growth: number;
 
@@ -29,10 +30,10 @@ export interface GeneratorConfig {
 }
 
 export const defaultConfig: GeneratorConfig = {
-  size: 400,
   growth: 6,
   edges: 6,
-  seed: undefined
+  size: 400,
+  seed: undefined,
 };
 
 export function generateSvgPath(config: GeneratorConfig = defaultConfig): {
@@ -48,7 +49,7 @@ export function createPoints(config: GeneratorConfig): {
   destPoints: Point[];
   seed: number;
 } {
-  const { size, growth, edges, seed } = config;
+  const { growth, edges, size, seed } = config;
 
   let outerRad = size / 2;
   let innerRad = growth * (outerRad / 10);
