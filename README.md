@@ -1,43 +1,35 @@
-TODOS: 
-- [x] Add generative blobs script for dynamic blobs
-- [x] Implement generative blobs
-- [ ] Submit minihack
-- [ ] Finish readme and instructions
 
-# generative-wrappers
-Infinite Polywrappers! 
+# Generative Polywrap Icons
+For every published polywrapper, we'd like to create a unique svg animation which can be used as the polywrapper's icon.  
 
-For every published polywrapper, we'd like to create a distinct wrapper svg animation which can be used to recognize an user's  
+Here's an initial concept of what this might look like, taken from the new [Polywrap brand guide (credits to Mery)](https://github.com/polywrap/branding/blob/master/Polywrap_Brandbook_public_2021.pdf):  
+![concept](./img/concept.png)  
 
-![Polywrapper Image](TODOADDLINK)
+# Deliverables  
+## 1. Procedural Blob Animation Demo (Jordan)
+https://icy-moon-8629.on.fleek.co/  
+![procedural](./img/procedural.png)  
 
-### Project specs:
-- SVG
-- HTML
-- No CSS
-- SMIL standard
-- ...
-  
-Data flow:
-### Inputs:
-- The ENS address, IPFS hash, or other CID that points to a polywrapper manifest (i.e.: `web3api.meta.yaml`)
+Source code can be found in this repository.
 
-*this CID is then decomposed as:*
-- Number of dependencies (ethereum, gnosis)
-- Dep: all required types (Ethereum_Query, Ethereum_TxReceipt, ...)
-- Package size ("Ethereum's query modules is 500kb")
-- Metadata = title, description, icon
+## 2. Spec -> SVG Animation (Colin)
+https://codepen.io/cedric_waxwing/pen/PomYwMG  
+![svg-animation](./img/svg-animation.png)  
 
-### Outputs:
-- Animated SVG: `/outputs/{wrapper-name-hash.svg}`
-- Simple HTML: `/outputs/{wrapper-name-hash.html}` 
+# Design Requirements
+- **Vanilla SVG**: In order to ensure this icon can be rendered everywhere (not just the browser), we'd like it to be a "vanilla" SVG file. Animations can be achieved using the [SMIL standard](https://www.w3.org/TR/SMIL3/).
+- **Procedural Generation**: The polywrapper's unique SVG should be able to be procedurally generated given the polywrapper's URI. Heuristics can be gathered from the polywrapper's package, such as:
+  * Number of dependencies (ex: ethereum, gnosis, etc)
+  * Number of types used from each dependency
+  * Bundle size (ex: "ethereum's query module is 500kb")
+  * Metadata (ex: title, description, icon)
 
-### How to use:
-1. Input your polywrapper's ENS or IPFS CID
-2. Run `TODO` to generate your animated SVG and HTML files.
+# Artistic Direction
+## Brand Consistency
+Polywrappers will have their own predefined "brand", and we should try to incorporate this as much as possible. This is why in the example above, the Gnosis logo is used in the "fully formed" state.
 
-
-### Animation States
+## Animation States
+The animation states envisioned are as follows:
 1. Fully Formed
 - SVG of the Polywrap (gnosis.svg)
 - Full circle in the center
@@ -52,12 +44,6 @@ Data flow:
 - add another morph shape for interesting visual transformation
 - move the position slowly towards the end position
 
-...
-
 N. Fully Decomposed
 - Circles for each dependency (ethereum, etc, etc)
 - Full circles
-
-
-Join our community:
- - [Discord]()
